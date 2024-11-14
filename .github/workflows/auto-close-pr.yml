@@ -1,0 +1,20 @@
+name: Auto-Close PR
+
+on:
+  schedule:
+    - cron: '10 5 * * 1-5'
+  workflow_dispatch:
+env:
+  AWS_USERNAME: AWS
+
+jobs:
+  Check-PR:
+    runs-on: [ ubuntu-22.04 ]
+    steps:
+      - name: Perform Cleanup
+        uses: lynws/devops/.github/actions/check-and-clean-pr@main
+        with:
+          GIT_PAT: ${{ secrets.GIT_PAT }}
+      - name: Workspace Clean
+        if: always()
+        run: find . -mindepth 1 -maxdepth 1 -exec rm -rf {} + || true
