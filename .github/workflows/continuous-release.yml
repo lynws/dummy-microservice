@@ -1,4 +1,4 @@
-name: Continuous Master Release
+name: Continuous Main Release
 on:
   workflow_dispatch:
     inputs:
