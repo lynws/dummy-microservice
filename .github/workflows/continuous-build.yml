@@ -17,3 +17,4 @@ permissions: write-all
 jobs:
   Microservice:
     uses: lynws/devops/.github/workflows/continuous-build.yml@main
+
